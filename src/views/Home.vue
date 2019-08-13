@@ -8,11 +8,17 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
+import {loginReq} from '@/api/user'
 @Component({
   components: {
     HelloWorld,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  public mounted(){
+    loginReq({user_name: 'Lison', password: 123}).then(res=>{
+      console.log(res.data.code);
+    });
+  }
+}
 </script>
